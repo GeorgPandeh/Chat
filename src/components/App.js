@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { messagesAction } from '../actions/messagesAction';
+import { socketAction } from '../actions/socketAction';
 import { Input, Layout, Row, Col } from 'antd';
 import SendMessage from './SendMessage';
 import Messages from './Messages/Messages';
 import Layer from './layout';
-
+// import { socket } from './socket'; 
 
 class App extends Component {
   constructor() {
@@ -17,6 +18,7 @@ class App extends Component {
 
   startSocket = () => {
     const socket = new WebSocket('wss://wssproxy.herokuapp.com');
+    this.props.getSocket(socket);
     socket.onopen = () => {
       console.log('WebSocket Client Connected');
     };
@@ -74,6 +76,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => ({
   getMessages: (data) => dispatch(messagesAction(data)),
+  getSocket: (socket) => dispatch(socketAction(socket))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

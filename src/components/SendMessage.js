@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'antd';
-const socket = new WebSocket('wss://wssproxy.herokuapp.com');
+import { connect } from 'react-redux'
+
 // ws://st-chat.shas.tel
 class SendMessage extends Component {
   constructor() {
@@ -21,7 +22,7 @@ class SendMessage extends Component {
 
     const text = document.getElementsByClassName('text-of-message')[0];
     this.message.message = text.value;
-    socket.send(JSON.stringify(this.message));
+    this.props.socket.send(JSON.stringify(this.message));
   }
 
   render() {
@@ -31,4 +32,10 @@ class SendMessage extends Component {
   }
 }
 
-export default SendMessage;
+const mapStateToProps = state => {
+  return {
+    socket: state.socket
+  }
+}
+
+export default connect(mapStateToProps)(SendMessage);
