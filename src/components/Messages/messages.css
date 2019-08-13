@@ -1,0 +1,41 @@
+.messages {
+  overflow-y: scroll;
+  height: 400px;
+  padding-right: 10px;
+  flex-direction: column-reverse; /* не забыть осуществить данную херню */
+}
+
+.author {
+  display: inline-block;
+}
+
+.time {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+#personal-message .message-block {
+  text-align: right;
+}
+
+.message {
+  background-color: #0050b3;
+  padding: 10px;
+  border-radius: 10px;
+  word-break: break-all;
+}
+
+#personal-message .message {
+  background-color: #f5222d;
+}
+
+/* .text-of-message-wrapper {
+  max-width: 55%;
+  display: inline-block;
+} */
+
+/* .text-of-message {
+  padding: 10px;
+  word-break: break-all;
+  border-radius: 15px;
+} */
