@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'antd';
 const socket = new WebSocket('wss://wssproxy.herokuapp.com');
-
+// ws://st-chat.shas.tel
 class SendMessage extends Component {
   constructor() {
     super();
