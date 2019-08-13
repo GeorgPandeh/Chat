@@ -2,10 +2,12 @@
   "name": "chat",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://GeorgPandeh.github.io/Chat",
+  "engines": {
+    "npm": "6.4.1",
+    "node": "10.15.1"
+  },
   "dependencies": {
     "antd": "^3.21.2",
-    "gh-pages": "^2.1.1",
     "moment": "^2.24.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -20,9 +22,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

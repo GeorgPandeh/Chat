@@ -14,34 +14,9 @@ class App extends Component {
     }
     this.nickName = '';
   }
-  
-  // function connect() {
-  //   var ws = new WebSocket('ws://localhost:8080');
-  //   ws.onopen = function() {
-  //     console.log('open')
-  //   };
-  
-  //   ws.onmessage = function(e) {
-  //     console.log('Message:', e.data);
-  //   };
-  
-  //   ws.onclose = function(e) {
-  //     console.log('Socket is closed. Reconnect will be attempted in 1 second.', e.reason);
-  //     setTimeout(function() {
-  //       connect();
-  //     }, 1000);
-  //   };
-  
-  //   ws.onerror = function(err) {
-  //     console.error('Socket encountered error: ', err.message, 'Closing socket');
-  //     ws.close();
-  //   };
-  // }
-  
-  // connect();
 
   startSocket = () => {
-    const socket = new WebSocket('ws://st-chat.shas.tel');
+    const socket = new WebSocket('wss://wssproxy.herokuapp.com');
     socket.onopen = () => {
       console.log('WebSocket Client Connected');
     };

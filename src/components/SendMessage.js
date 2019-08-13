@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'antd';
-const socket = new WebSocket('ws://st-chat.shas.tel');
+const socket = new WebSocket('wss://wssproxy.herokuapp.com');
 
 class SendMessage extends Component {
   constructor() {
