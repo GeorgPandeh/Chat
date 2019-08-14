@@ -4,5 +4,5 @@ import { getSocket } from './getSocket';
 
 export default combineReducers({
   messages: getMessages,
-  socket: getSocket,
+  socket: getSocket
 })

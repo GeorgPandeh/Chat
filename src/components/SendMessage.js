@@ -9,21 +9,32 @@ class SendMessage extends Component {
       from: '',
       message: '',
     }
+    this.offlineMessages = [];
   }
 
   send = () => {
     const { socket } = this.props;
+    const isReady = socket.readyState;
     const nickName = JSON.parse(localStorage.getItem('nickName'));
+    const text = document.getElementsByClassName('text-of-message')[0];
+
     if (nickName) {
       this.message.from = nickName;
     } else {
       this.message.from = 'anonymus';
     }
 
-    const text = document.getElementsByClassName('text-of-message')[0];
     this.message.message = text.value;
-    socket.send(JSON.stringify(this.message));
-    text.value = '';
+
+    if (isReady === 3 || isReady === 0) {
+      this.offlineMessages.push({ ...this.message });
+      localStorage.setItem('offlineMessages', JSON.stringify(this.offlineMessages));
+    }
+
+    if (isReady === 1) {
+      socket.send(JSON.stringify(this.message));
+      text.value = '';
+    }
   }
 
   render() {

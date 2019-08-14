@@ -21,7 +21,13 @@ class App extends Component {
   startSocket = () => {
     const socket = new WebSocket('wss://wssproxy.herokuapp.com'); // ws://st-chat.shas.tel
     this.props.getSocket(socket);
+
     socket.onopen = () => {
+      const offlineMessages = JSON.parse(localStorage.getItem('offlineMessages'));
+      if (offlineMessages && offlineMessages.length > 0) {
+        offlineMessages.map((item) => socket.send(JSON.stringify(item)));
+        localStorage.removeItem('offlineMessages');
+      }
       console.log('WebSocket Client Connected');
     };
 
