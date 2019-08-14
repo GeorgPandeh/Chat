@@ -1,3 +1,4 @@
+import notification from '../components/notification';
 let initialState = [];
 
 export const getMessages = (state = initialState, action) => {
@@ -11,6 +12,11 @@ export const getMessages = (state = initialState, action) => {
           });
         });
       }
+
+      if (data[0]) {
+        notification(data)
+      }
+
       state.unshift(...data);
       return [...state];
     default: return state;

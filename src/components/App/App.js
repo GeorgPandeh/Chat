@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { messagesAction } from '../actions/messagesAction';
-import { socketAction } from '../actions/socketAction';
+import { messagesAction } from '../../actions/messagesAction';
+import { socketAction } from '../../actions/socketAction';
 import { Input, Layout, Row, Col } from 'antd';
-import SendMessage from './SendMessage';
-import Messages from './Messages/Messages';
-import Layer from './layout';
-// import { socket } from './socket'; 
+import SendMessage from '../SendMessage';
+import Messages from '../Messages/Messages';
+import Layer from '../layout';
+
+import './app.css';
 
 class App extends Component {
   constructor() {
@@ -17,7 +18,7 @@ class App extends Component {
   }
 
   startSocket = () => {
-    const socket = new WebSocket('wss://wssproxy.herokuapp.com');
+    const socket = new WebSocket('wss://wssproxy.herokuapp.com'); // ws://st-chat.shas.tel
     this.props.getSocket(socket);
     socket.onopen = () => {
       console.log('WebSocket Client Connected');
@@ -46,19 +47,19 @@ class App extends Component {
     return (
       <div>
         <Layer>
-          <Content style={{ padding: '0 50px', background: '#f5f5f5' }}>
-            <div style={{ background: '#fff', padding: 24, minHeight: 280 }}>
+          <Content className='content'>
+            <div className='content-wrapper'>
               <Messages />
-              <Row gutter={24} style={{ marginTop: '20px' }}>
-                <Col span={20}>
+              <Row gutter={24} className='form'>
+                <Col span={18}>
                   <TextArea
                     className='text-of-message'
                     placeholder="input you message"
                     autosize={{ minRows: 1, maxRows: 6 }}
                   />
                 </Col>
-                <Col span={4}>
-                  <SendMessage/>
+                <Col span={6}>
+                  <SendMessage />
                 </Col>
               </Row>
             </div>
@@ -70,9 +71,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return (
-    state
-  )
+  return ({
+    messages: state.messages
+  })
 }
 const mapDispatchToProps = dispatch => ({
   getMessages: (data) => dispatch(messagesAction(data)),

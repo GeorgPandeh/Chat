@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Layout, Input, Row, Col, Button } from 'antd';
-import { Select } from 'antd';
 
 class Header extends Component {
 
@@ -12,22 +11,30 @@ class Header extends Component {
   handleChange = (value) => {
     console.log(`selected ${value}`);
   }
+
+  notifyMe = () => {
+    if (!("Notification" in window)) {
+      alert("This browser does not support desktop notification");
+    }
+
+    if (Notification.permission !== "denied") {
+      Notification.requestPermission();
+    }
+  }
+
   render() {
-    const { Option } = Select;
     return (
       <div>
         <Layout.Header>
           <Row>
-            <Col span={4}>
-              <Input className="input-nickname-field" placeholder="nickName"/>
+            <Col span={10}>
+              <Input className="input-nickname-field" placeholder="nickName" />
             </Col>
             <Col span={10}>
               <Button type="primary" onClick={this.changeNickName}>Confirm</Button>
-              <Select defaultValue="lucy" style={{ width: 120 }} onChange={this.handleChange}>
-                <Option value="jack">Jack</Option>
-                <Option value="lucy">Lucy</Option>
-                <Option value="Yiminghe">yiminghe</Option>
-              </Select>
+            </Col>
+            <Col span={4}>
+              <Button type='primary' onClick={this.notifyMe}>Notify me!</Button>
             </Col>
           </Row>
         </Layout.Header>

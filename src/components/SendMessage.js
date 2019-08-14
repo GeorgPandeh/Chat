@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Button } from 'antd';
 import { connect } from 'react-redux'
 
-// ws://st-chat.shas.tel
 class SendMessage extends Component {
   constructor() {
     super();
@@ -13,6 +12,7 @@ class SendMessage extends Component {
   }
 
   send = () => {
+    const { socket } = this.props;
     const nickName = JSON.parse(localStorage.getItem('nickName'));
     if (nickName) {
       this.message.from = nickName;
@@ -22,7 +22,8 @@ class SendMessage extends Component {
 
     const text = document.getElementsByClassName('text-of-message')[0];
     this.message.message = text.value;
-    this.props.socket.send(JSON.stringify(this.message));
+    socket.send(JSON.stringify(this.message));
+    text.value = '';
   }
 
   render() {
