@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { messagesAction } from '../../actions/messagesAction';
-import { socketAction } from '../../actions/socketAction';
-import { Input, Layout, Row, Col } from 'antd';
+import { Input, Row, Col } from 'antd';
+
 import SendMessage from '../SendMessage';
 import Messages from '../Messages/Messages';
-import Layer from '../layout';
-
+import Layer from '../layout/layout.js';
+import { messagesAction } from '../../actions/messagesAction';
+import { socketAction } from '../../actions/socketAction';
 import './app.css';
+
 
 class App extends Component {
   constructor() {
@@ -36,34 +37,33 @@ class App extends Component {
     };
   }
 
+  componentWillUnmount() {
+    alert('Chat is offline, refresh page, please.');
+  }
+
   componentDidMount() {
     this.startSocket();
   }
 
   render() {
-    const { Content } = Layout;
     const { TextArea } = Input;
 
     return (
       <div>
         <Layer>
-          <Content className='content'>
-            <div className='content-wrapper'>
-              <Messages />
-              <Row gutter={24} className='form'>
-                <Col span={18}>
-                  <TextArea
-                    className='text-of-message'
-                    placeholder="input you message"
-                    autosize={{ minRows: 1, maxRows: 6 }}
-                  />
-                </Col>
-                <Col span={6}>
-                  <SendMessage />
-                </Col>
-              </Row>
-            </div>
-          </Content>
+          <Messages />
+          <Row gutter={24} className='form'>
+            <Col span={18}>
+              <TextArea
+                className='text-of-message'
+                placeholder="input you message"
+                autosize={{ minRows: 1, maxRows: 6 }}
+              />
+            </Col>
+            <Col span={6}>
+              <SendMessage />
+            </Col>
+          </Row>
         </Layer>
       </div>
     );
@@ -71,9 +71,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return ({
-    messages: state.messages
-  })
+  return (
+    state
+  )
 }
 const mapDispatchToProps = dispatch => ({
   getMessages: (data) => dispatch(messagesAction(data)),

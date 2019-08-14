@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Divider, Row, Col } from 'antd';
 import moment from 'moment';
+
 import 'moment/locale/ru'
 import './messages.css';
 class Messages extends Component {

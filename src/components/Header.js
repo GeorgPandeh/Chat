@@ -3,13 +3,9 @@ import { Layout, Input, Row, Col, Button } from 'antd';
 
 class Header extends Component {
 
-  changeNickName = (e) => {
+  changeNickName = () => {
     const nickName = document.getElementsByClassName('input-nickname-field')[0].value;
     localStorage.setItem('nickName', JSON.stringify(nickName));
-  }
-
-  handleChange = (value) => {
-    console.log(`selected ${value}`);
   }
 
   notifyMe = () => {
