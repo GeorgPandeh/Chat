@@ -1,7 +1,8 @@
 let window_focus = true;
+
 export default (data) => {
-  window.onblur = function () { window_focus = false; }
-  window.onfocus = function () { window_focus = true; }
+  window.onblur = () => window_focus = false;
+  window.onfocus = () => window_focus = true;
 
   if (!window_focus) {
     if (!("Notification" in window)) {
@@ -11,7 +12,7 @@ export default (data) => {
         body: data[0].message
       });
 
-      notification.onclick = function (x) { window.focus(); };
+      notification.onclick = () => window.focus();
     }
   }
 }

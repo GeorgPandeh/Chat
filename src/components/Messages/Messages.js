@@ -7,6 +7,11 @@ import 'moment/locale/ru'
 import './messages.css';
 class Messages extends Component {
 
+  componentDidUpdate() {
+    const messages = document.getElementsByClassName('messages')[0];
+    messages.scrollTop = messages.scrollHeight;
+  }
+
   messageRender = (item) => {
     const nickName = JSON.parse(localStorage.getItem('nickName'));
     let id = item.id;
