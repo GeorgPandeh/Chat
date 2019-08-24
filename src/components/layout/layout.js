@@ -16,7 +16,9 @@ const Layer = ({ children }) => (
           <main>{children}</main>
         </div>
       </Content>
-      <Footer className='footer'>Ant Design ©2019 Created by Georg Pandeh Fumani</Footer>
+      <Footer className='footer'>
+        <div>Ant Design ©2019 Created by Georg Pandeh Fumani</div>
+      </Footer>
     </Layout>
   </div >
 );

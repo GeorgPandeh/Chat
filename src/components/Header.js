@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Input, Row, Col, Button } from 'antd';
+import { Input, Row, Col, Button } from 'antd';
 
 class Header extends Component {
 
@@ -20,21 +20,17 @@ class Header extends Component {
 
   render() {
     return (
-      <div>
-        <Layout.Header>
-          <Row>
-            <Col span={10}>
-              <Input className="input-nickname-field" placeholder="nickName" />
-            </Col>
-            <Col span={10}>
-              <Button type="primary" onClick={this.changeNickName}>Confirm</Button>
-            </Col>
-            <Col span={4}>
-              <Button type='primary' onClick={this.notifyMe}>Notify me!</Button>
-            </Col>
-          </Row>
-        </Layout.Header>
-      </div>
+      <Row className='header' type="flex" justify="space-around" align="middle">
+        <Col span={7}>
+          <Input className="input-nickname-field" placeholder="nickName" />
+        </Col>
+        <Col span={6}>
+          <Button type="primary" onClick={this.changeNickName}>Confirm</Button>
+        </Col>
+        <Col span={6} offset={3}>
+          <Button type='primary' onClick={this.notifyMe}>Notify me!</Button>
+        </Col>
+      </Row>
     )
   }
 }

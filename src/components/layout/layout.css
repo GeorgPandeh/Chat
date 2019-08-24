@@ -1,19 +1,38 @@
 .footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  display: table;
   width: 100%;
-  padding: 10px 50px !important;
+  height: 10vh;
+  padding: 0 !important;
   text-align: center;
+  background-color: #d9d9d9 !important;
+}
+
+.footer div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.header {
+  height: 10vh;
+  background-color: #262626;
+}
+
+.header input, .header button {
+  height: 5vh;
+}
+
+.header button {
+  width: 100%;
+  max-width: 150px;
 }
 
 .content {
-  padding: 0 50px;
+  padding: 2.5vh 2.5%;
   background-color: #f5f5f5;
 }
 
 .content-wrapper {
-  min-height: 280px;
-  padding: 24px;
+  height: 75vh;
+  padding: 0 24px;
   background: #fff;
 }
